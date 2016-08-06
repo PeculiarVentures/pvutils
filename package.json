@@ -1,0 +1,17 @@
+{
+    "author": {
+        "email": "yury@strozhevsky.com",
+        "name": "Yury Strozhevsky"
+    },
+    "contributors": [
+        {
+            "email": "rmh@unmitigatedrisk.com",
+            "name": "Ryan Hurst"
+        }
+    ],
+    "description": "Common utilities for products from Peculiar Ventures",
+    "main": "src/utils.js",
+    "name": "pvutils",
+    "version": "1.0.1",
+    "license": "MIT"
+}
