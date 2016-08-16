@@ -9,9 +9,13 @@
             "name": "Ryan Hurst"
         }
     ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/PeculiarVentures/pvutils.git"
+    },
     "description": "Common utilities for products from Peculiar Ventures",
     "main": "src/utils.js",
     "name": "pvutils",
-    "version": "1.0.1",
+    "version": "1.0.3",
     "license": "MIT"
 }

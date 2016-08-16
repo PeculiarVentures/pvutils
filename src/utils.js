@@ -17,6 +17,9 @@ export function getUTCDate(date)
  */
 export function getParametersValue(parameters, name, defaultValue)
 {
+	if((parameters instanceof Object) === false)
+		return defaultValue;
+	
 	if(name in parameters)
 		return parameters[name];
 	
