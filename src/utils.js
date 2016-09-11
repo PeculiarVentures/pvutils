@@ -29,11 +29,11 @@ export function getParametersValue(parameters, name, defaultValue)
 /**
  * Converts "ArrayBuffer" into a hexdecimal string
  * @param {ArrayBuffer} inputBuffer
- * @param {number} inputOffset
- * @param {number} inputLength
+ * @param {number} [inputOffset=0]
+ * @param {number} [inputLength=inputBuffer.byteLength]
  * @returns {string}
  */
-export function bufferToHexCodes(inputBuffer, inputOffset, inputLength)
+export function bufferToHexCodes(inputBuffer, inputOffset = 0, inputLength = inputBuffer.byteLength)
 {
 	let result = "";
 	
@@ -396,10 +396,11 @@ export function toBase64(input, useUrlTemplate = false, skipPadding = false)
 /**
  * Decode string from BASE64 (or "base64url")
  * @param {string} input
- * @param {boolean} useUrlTemplate If "true" then output would be encoded using "base64url"
+ * @param {boolean} [useUrlTemplate=false] If "true" then output would be encoded using "base64url"
+ * @param {boolean} [cutTailZeros=false] If "true" then cut tailing zeroz from function result
  * @returns {string}
  */
-export function fromBase64(input, useUrlTemplate = false)
+export function fromBase64(input, useUrlTemplate = false, cutTailZeros = false)
 {
 	const template = (useUrlTemplate) ? base64UrlTemplate : base64Template;
 	
@@ -445,6 +446,24 @@ export function fromBase64(input, useUrlTemplate = false)
 			output += String.fromCharCode(chr3);
 	}
 	
+	if(cutTailZeros)
+	{
+		const outputLength = output.length;
+		let nonZeroStart = (-1);
+		
+		for(let i = (outputLength - 1); i >= 0; i--)
+		{
+			if(output.charCodeAt(i) !== 0)
+			{
+				nonZeroStart = i;
+				break;
+			}
+		}
+		
+		if(nonZeroStart !== (-1))
+			output = output.slice(0, nonZeroStart + 1);
+	}
+	
 	return output;
 }
 //**************************************************************************************
@@ -470,5 +489,22 @@ export function stringToArrayBuffer(str)
 		resultView[i] = str.charCodeAt(i);
 	
 	return resultBuffer;
+}
+//**************************************************************************************
+const log2 = Math.log(2);
+//**************************************************************************************
+/**
+ * Get nearest to input length power of 2
+ * @param {number} length Current length of existing array
+ * @returns {number}
+ */
+export function nearestPowerOf2(length)
+{
+	const base = (Math.log(length) / log2);
+	
+	const floor = Math.floor(base);
+	const round = Math.round(base);
+	
+	return ((floor === round) ? floor : round);
 }
 //**************************************************************************************
