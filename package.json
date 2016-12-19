@@ -1,21 +1,35 @@
 {
-    "author": {
-        "email": "yury@strozhevsky.com",
-        "name": "Yury Strozhevsky"
-    },
-    "contributors": [
-        {
-            "email": "rmh@unmitigatedrisk.com",
-            "name": "Ryan Hurst"
-        }
-    ],
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/PeculiarVentures/pvutils.git"
-    },
-    "description": "Common utilities for products from Peculiar Ventures",
-    "main": "src/utils.js",
-    "name": "pvutils",
-    "version": "1.0.4",
-    "license": "MIT"
+  "author": {
+    "email": "yury@strozhevsky.com",
+    "name": "Yury Strozhevsky"
+  },
+  "contributors": [
+    {
+      "email": "rmh@unmitigatedrisk.com",
+      "name": "Ryan Hurst"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PeculiarVentures/pvutils.git"
+  },
+  "description": "Common utilities for products from Peculiar Ventures",
+  "scripts": {
+    "install": "npm run build",
+    "build": "babel src --compact=false --out-dir build --source-maps",
+    "watch": "babel src --compact=false --out-dir build --source-maps --watch"
+  },
+  "jsnext:main": "./src/utils.js",
+  "main": "./build/utils.js",
+  "dependencies": {
+    "rollup": "0.34.7",
+    "rollup-plugin-node-resolve": "^1.7.1",
+    "babel-cli": "latest",
+    "rollup-plugin-babel": "latest",
+    "babelrc-rollup": "latest",
+    "babel-plugin-external-helpers": "latest"
+  },
+  "name": "pvutils",
+  "version": "1.0.5",
+  "license": "MIT"
 }
