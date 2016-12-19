@@ -22,14 +22,10 @@
   "jsnext:main": "./src/utils.js",
   "main": "./build/utils.js",
   "dependencies": {
-    "rollup": "0.34.7",
-    "rollup-plugin-node-resolve": "^1.7.1",
     "babel-cli": "latest",
-    "rollup-plugin-babel": "latest",
-    "babelrc-rollup": "latest",
-    "babel-plugin-external-helpers": "latest"
+    "babel-preset-es2015": "latest"
   },
   "name": "pvutils",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "license": "MIT"
 }
