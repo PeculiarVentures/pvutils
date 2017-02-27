@@ -26,6 +26,6 @@
     "babel-preset-es2015": "latest"
   },
   "name": "pvutils",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "license": "MIT"
 }
