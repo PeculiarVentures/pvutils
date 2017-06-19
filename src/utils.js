@@ -162,7 +162,7 @@ export function utilToBase(value, base, reserved = 0)
 //**************************************************************************************
 /**
  * Concatenate two ArrayBuffers
- * @param {...ArrayBuffer} buffers First ArrayBuffer (first part of concatenated array)
+ * @param {...ArrayBuffer} buffers Set of ArrayBuffer
  */
 export function utilConcatBuf(...buffers)
 {
@@ -187,6 +187,35 @@ export function utilConcatBuf(...buffers)
 	}
 	
 	return retBuf;
+}
+//**************************************************************************************
+/**
+ * Concatenate two Uint8Array
+ * @param {...Uint8Array} views Set of Uint8Array
+ */
+export function utilConcatView(...views)
+{
+	//region Initial variables
+	let outputLength = 0;
+	let prevLength = 0;
+	//endregion
+	
+	//region Calculate output length
+	
+	for(const view of views)
+		outputLength += view.length;
+	//endregion
+	
+	const retBuf = new ArrayBuffer(outputLength);
+	const retView = new Uint8Array(retBuf);
+	
+	for(const view of views)
+	{
+		retView.set(view, prevLength);
+		prevLength += view.length;
+	}
+	
+	return retView;
 }
 //**************************************************************************************
 /**
