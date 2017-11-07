@@ -15,17 +15,17 @@
   },
   "description": "Common utilities for products from Peculiar Ventures",
   "scripts": {
-    "install": "npm run build",
+    "prepublish": "npm run build",
     "build": "babel src --compact=false --out-dir build --source-maps",
     "watch": "babel src --compact=false --out-dir build --source-maps --watch"
   },
   "jsnext:main": "./src/utils.js",
   "main": "./build/utils.js",
-  "dependencies": {
+  "devDependencies": {
     "babel-cli": "latest",
     "babel-preset-es2015": "latest"
   },
   "name": "pvutils",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "license": "MIT"
 }
