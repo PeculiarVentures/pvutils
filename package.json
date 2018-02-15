@@ -23,7 +23,7 @@
   "main": "./build/utils.js",
   "devDependencies": {
     "babel-cli": "latest",
-    "babel-preset-es2017": "latest"
+    "babel-preset-env": "latest"
   },
   "name": "pvutils",
   "version": "1.0.9",
