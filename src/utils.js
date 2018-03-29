@@ -33,7 +33,7 @@ export function getParametersValue(parameters, name, defaultValue)
  * @param {number} [inputLength=inputBuffer.byteLength]
  * @returns {string}
  */
-export function bufferToHexCodes(inputBuffer, inputOffset = 0, inputLength = inputBuffer.byteLength)
+export function bufferToHexCodes(inputBuffer, inputOffset = 0, inputLength = (inputBuffer.byteLength - inputOffset))
 {
 	let result = "";
 	
@@ -99,6 +99,9 @@ export function utilFromBase(inputBuffer, inputBase)
 {
 	let result = 0;
 	
+	if(inputBuffer.length === 1)
+		return inputBuffer[0];
+	
 	for(let i = (inputBuffer.length - 1); i >= 0; i--)
 		result += inputBuffer[(inputBuffer.length - 1) - i] * Math.pow(2, inputBase * i);
 	
@@ -112,9 +115,9 @@ export function utilFromBase(inputBuffer, inputBase)
  * @param {number} [reserved=0] Pre-defined number of bytes in output array (-1 = limited by function itself)
  * @returns {ArrayBuffer}
  */
-export function utilToBase(value, base, reserved = 0)
+export function utilToBase(value, base, reserved = (-1))
 {
-	const internalReserved = reserved || (-1);
+	const internalReserved = reserved;
 	let internalValue = value;
 	
 	let result = 0;
@@ -201,7 +204,6 @@ export function utilConcatView(...views)
 	//endregion
 	
 	//region Calculate output length
-	
 	for(const view of views)
 		outputLength += view.length;
 	//endregion
@@ -348,6 +350,10 @@ export function isEqualBuffer(inputBuffer1, inputBuffer2)
 export function padNumber(inputNumber, fullLength)
 {
 	const str = inputNumber.toString(10);
+	
+	if(fullLength < str.length)
+		return "";
+	
 	const dif = fullLength - str.length;
 	
 	const padding = new Array(dif);
@@ -508,6 +514,8 @@ export function fromBase64(input, useUrlTemplate = false, cutTailZeros = false)
 		
 		if(nonZeroStart !== (-1))
 			output = output.slice(0, nonZeroStart + 1);
+		else
+			output = "";
 	}
 	
 	return output;
