@@ -9,8 +9,6 @@ dependencies:
     - npm install -g nyc coveralls
 
 test:
-  pre:
-    - npm run build:tests
   post:
     - cat ./coverage/lcov.info | coveralls
     - mkdir $CIRCLE_ARTIFACTS/coverage

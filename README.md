@@ -1,5 +1,7 @@
 # pvutils
 
+[![CircleCI](https://circleci.com/gh/PeculiarVentures/pvutils.svg?style=svg)](https://circleci.com/gh/PeculiarVentures/pvutils) [![Coverage Status](https://coveralls.io/repos/github/PeculiarVentures/pvutils/badge.svg?branch=master)](https://coveralls.io/github/PeculiarVentures/pvutils?branch=master)
+
 `pvutils` is a set of common utility functions used in various Peculiar Ventures Javascript based projects. 
 
 Some example capabilities included in `pvutils` include:
