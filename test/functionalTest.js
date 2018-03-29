@@ -150,6 +150,7 @@ context("Functional Tests for \"pvutils\" package", () =>
 		assert.equal(pvutils.fromBase64("AQIDBAUGBwj__wAA", true, true), "\x01\x02\x03\x04\x05\x06\x07\x08\xFF\xFF", "Incorrect result #3");
 		assert.equal(pvutils.fromBase64("AQIDBAUGBwj__w==", true, true), "\x01\x02\x03\x04\x05\x06\x07\x08\xFF\xFF", "Incorrect result #4");
 		assert.equal(pvutils.fromBase64("AAAAAA====", true, true), "", "Incorrect result #5");
+		assert.equal(pvutils.fromBase64("AAAAAAAAA", true, true), "", "Incorrect result #6");
 	});
 	
 	it("arrayBufferToString", () =>
