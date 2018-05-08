@@ -24,6 +24,7 @@ context("Functional Tests for \"pvutils\" package", () =>
 		assert.equal(pvutils.bufferToHexCodes(data.buffer), "0102030405060708090A", "Incorrect return value #1");
 		assert.equal(pvutils.bufferToHexCodes(data.buffer, 1), "02030405060708090A", "Incorrect return value #2");
 		assert.equal(pvutils.bufferToHexCodes(data.buffer, 1, 3), "020304", "Incorrect return value #3");
+		assert.equal(pvutils.bufferToHexCodes(data.buffer, 1, 3, true), "02 03 04", "Incorrect return value #3");
 	});
 	
 	it("checkBufferParams", () =>

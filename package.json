@@ -21,6 +21,7 @@
     "test": "cross-env NODE_ENV=test nyc mocha --require babel-register --require babel-polyfill"
   },
   "jsnext:main": "./src/utils.js",
+  "module": "./src/index.js",
   "main": "./build/utils.js",
   "devDependencies": {
     "babel-cli": "latest",
@@ -29,9 +30,10 @@
     "cross-env": "^5.1.4",
     "babel-plugin-istanbul": "^4.1.5",
     "babel-preset-env": "latest",
-    "babel-polyfill": "^6.26.0"
+    "babel-polyfill": "^6.26.0",
+    "eslint": "^4.19.1"
   },
   "name": "pvutils",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "license": "MIT"
 }
