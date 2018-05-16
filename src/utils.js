@@ -677,3 +677,14 @@ export function nearestPowerOf2(length)
 	return ((floor === round) ? floor : round);
 }
 //**************************************************************************************
+/**
+ * Delete properties by name from specified object
+ * @param {Object} object Object to delete properties from
+ * @param {Array.<string>} propsArray Array of properties names
+ */
+export function clearProps(object, propsArray)
+{
+	for(const prop of propsArray)
+		delete object[prop];
+}
+//**************************************************************************************

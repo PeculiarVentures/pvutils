@@ -169,5 +169,15 @@ context("Functional Tests for \"pvutils\" package", () =>
 		assert.equal(pvutils.nearestPowerOf2(7), 3, "Incorrect result #1");
 		assert.equal(pvutils.nearestPowerOf2(5), 2, "Incorrect result #2");
 	});
+	
+	it("clearProps", () =>
+	{
+		const testObject = {
+			test: 1,
+			test2: 2
+		};
+		
+		pvutils.clearProps(testObject, ["test", "test2"]);
+	});
 });
 //**************************************************************************************
