@@ -24,7 +24,7 @@
     "test": "cross-env NODE_ENV=test nyc mocha --require babel-register --require babel-polyfill"
   },
   "jsnext:main": "./src/utils.js",
-  "module": "./src/index.js",
+  "module": "./src/utils.js",
   "main": "./build/utils.js",
   "devDependencies": {
     "babel-cli": "latest",
