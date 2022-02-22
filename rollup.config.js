@@ -21,6 +21,7 @@ export default [
         clean: true,
         tsconfigOverride: {
           compilerOptions: {
+            target: "ES6",
             module: "ES2015",
             removeComments: true,
           }
@@ -34,6 +35,24 @@ export default [
         file: pkg.main,
         format: "cjs",
       },
+    ],
+  },
+  {
+    input,
+    plugins: [
+      typescript({
+        check: true,
+        clean: true,
+        tsconfigOverride: {
+          compilerOptions: {
+            module: "ES2015",
+            removeComments: true,
+          }
+        }
+      }),
+    ],
+    external: [...external],
+    output: [
       {
         banner,
         file: pkg.module,
