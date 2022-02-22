@@ -44,7 +44,7 @@ jobs:
       - name: Setup .npmrc
         shell: bash
         run: |
-          npm set //registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}
+          npm set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
 
