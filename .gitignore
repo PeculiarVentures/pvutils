@@ -4,3 +4,5 @@
 build
 .nyc_output
 coverage
+*.log
+.DS_Store
