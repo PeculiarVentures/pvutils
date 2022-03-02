@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.3](https://github.com/PeculiarVentures/pvutils/compare/v1.1.2...v1.1.3) (2022-03-02)
+
+
+### Bug Fixes
+
+* Issue [#13](https://github.com/PeculiarVentures/pvutils/issues/13) ([7eb8b1d](https://github.com/PeculiarVentures/pvutils/commit/7eb8b1d5a3cecbdfc53adced07d7243c6d20cd5c))
+
 ### [1.1.2](https://github.com/PeculiarVentures/pvutils/compare/v1.1.1...v1.1.2) (2022-02-22)
 
 
