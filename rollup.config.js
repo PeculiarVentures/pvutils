@@ -35,24 +35,6 @@ export default [
         file: pkg.main,
         format: "cjs",
       },
-    ],
-  },
-  {
-    input,
-    plugins: [
-      typescript({
-        check: true,
-        clean: true,
-        tsconfigOverride: {
-          compilerOptions: {
-            module: "ES2015",
-            removeComments: true,
-          }
-        }
-      }),
-    ],
-    external: [...external],
-    output: [
       {
         banner,
         file: pkg.module,
