@@ -53,7 +53,7 @@
     "typescript": "^4.5.5"
   },
   "name": "pvutils",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "license": "MIT",
   "engines": {
     "node": ">=16.0.0"
