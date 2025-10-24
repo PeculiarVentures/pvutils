@@ -26,7 +26,7 @@ jobs:
           echo 'The pull request has not been merged'
           exit 1
 
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
@@ -36,9 +36,10 @@ jobs:
           git config user.email github-actions@github.com
 
       - name: Use Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v6
         with:
-          node-version: 16.x
+          node-version: 22.x
+          cache: "npm"
           registry-url: "https://registry.npmjs.org"
 
       - name: Setup .npmrc
@@ -54,11 +55,8 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
 
-      - name: Install global dependencies
-        run: npm i yarn standard-version -g
-
       - name: Install dependencies
-        run: yarn
+        run: npm ci
 
       - name: Get Prev Version
         shell: bash -ex {0}
@@ -84,7 +82,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
 
       - name: Push changes
-        uses: ad-m/github-push-action@v0.6.0
+        uses: ad-m/github-push-action@master
         if: env.PREV_VERSION != env.CURRENT_VERSION
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -92,7 +90,7 @@ jobs:
           tags: true
 
       - name: Create comment
-        uses: actions/github-script@0.8.0
+        uses: actions/github-script@v7
         if: env.PREV_VERSION != env.CURRENT_VERSION
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
