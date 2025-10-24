@@ -65,8 +65,7 @@ jobs:
           echo "::set-env name=PREV_VERSION::${PREV_VERSION}"
 
       - name: Bump version
-        run: |
-          standard-version
+        run: npm run release
 
       - name: Get Current Version
         shell: bash -ex {0}
