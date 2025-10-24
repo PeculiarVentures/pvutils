@@ -82,7 +82,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
 
       - name: Push changes
-        uses: ad-m/github-push-action@master
+        uses: ad-m/github-push-action@v1
         if: env.PREV_VERSION != env.CURRENT_VERSION
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
