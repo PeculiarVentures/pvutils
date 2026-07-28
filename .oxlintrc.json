@@ -4,7 +4,7 @@
   "categories": {
     "correctness": "error"
   },
-  "ignorePatterns": ["build/**/*", "rollup.config.js"],
+  "ignorePatterns": ["rollup.config.js"],
   "rules": {
     "typescript/explicit-function-return-type": "warn",
     "typescript/no-explicit-any": "off",
