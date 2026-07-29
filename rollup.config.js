@@ -3,12 +3,7 @@ import typescript from "rollup-plugin-typescript2";
 import dts from "rollup-plugin-dts";
 import pkg from "./package.json";
 
-const banner = [
-  "/*!",
-  " Copyright (c) Peculiar Ventures, LLC",
-  "*/",
-  "",
-].join("\n");
+const banner = ["/*!", " Copyright (c) Peculiar Ventures, LLC", "*/", ""].join("\n");
 const input = "src/index.ts";
 const external = Object.keys(pkg.dependencies || {});
 
@@ -24,8 +19,8 @@ export default [
             target: "ES6",
             module: "ES2015",
             removeComments: true,
-          }
-        }
+          },
+        },
       }),
     ],
     external: [...external],
@@ -47,14 +42,14 @@ export default [
     external: [...external],
     plugins: [
       dts({
-        tsconfig: path.resolve(__dirname, "./tsconfig.json")
-      })
+        tsconfig: path.resolve(__dirname, "./tsconfig.json"),
+      }),
     ],
     output: [
       {
         banner,
         file: pkg.types,
-      }
-    ]
+      },
+    ],
   },
 ];

@@ -1,0 +1,13 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["typescript", "unicorn", "oxc"],
+  "categories": {
+    "correctness": "error"
+  },
+  "ignorePatterns": ["rollup.config.js"],
+  "rules": {
+    "typescript/explicit-function-return-type": "warn",
+    "typescript/no-explicit-any": "off",
+    "typescript/explicit-module-boundary-types": "off"
+  }
+}

@@ -1,13 +1,5 @@
 {
-  "reporter": [
-    "lcov",
-    "text-summary"
-  ],
-  "include": [
-    "src/**/*.ts"
-  ],
-  "extension": [
-    ".ts",
-    ".tsx"
-  ]
+  "reporter": ["lcov", "text-summary"],
+  "include": ["src/**/*.ts"],
+  "extension": [".ts", ".tsx"]
 }
