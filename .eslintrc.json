@@ -13,9 +13,13 @@
   ],
   "ignorePatterns": [
     "build/**/*",
-    "rollup.config.js",
-    "vitest.config.ts"
+    "rollup.config.js"
   ],
+  "settings": {
+    "import/resolver": {
+      "typescript": true
+    }
+  },
   "rules": {
     "@typescript-eslint/ban-ts-ignore": 0,
     "@typescript-eslint/camelcase": 0,

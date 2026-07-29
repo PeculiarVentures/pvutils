@@ -25,7 +25,6 @@
     "lint:fix": "eslint --fix . --ext .ts",
     "build": "rollup -c",
     "coverage": "vitest run --coverage",
-    "coveralls": "cat ./coverage/lcov.info | coveralls",
     "release": "standard-version"
   },
   "files": [
@@ -42,6 +41,7 @@
     "@typescript-eslint/parser": "^5.12.1",
     "@vitest/coverage-v8": "^4.1.10",
     "eslint": "^8.9.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-import": "^2.25.4",
     "rollup": "2.79.2",
     "rollup-plugin-dts": "^4.1.0",
