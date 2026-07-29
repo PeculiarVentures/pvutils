@@ -281,5 +281,7 @@ describe('Functional Tests for "pvutils" package', () => {
     };
 
     clearProps(testObject, ["test", "test2"]);
+
+    expect(testObject).toEqual({});
   });
 });
