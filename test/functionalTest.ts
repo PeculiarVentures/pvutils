@@ -1,8 +1,11 @@
 import * as assert from "assert";
+
+import { describe, it } from "vitest";
+
 import * as pvutils from "../src";
 import { clearProps } from "../src";
 
-context("Functional Tests for \"pvutils\" package", () => {
+describe("Functional Tests for \"pvutils\" package", () => {
 	const data = new Uint8Array([0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A]);
 
 	it("getUTCDate", () => {

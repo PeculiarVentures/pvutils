@@ -20,12 +20,12 @@
   "description": "Common utilities for products from Peculiar Ventures",
   "scripts": {
     "prepare": "npm run build",
-    "test": "mocha",
+    "test": "vitest run",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint --fix . --ext .ts",
     "build": "rollup -c",
-    "coverage": "nyc npm test",
-    "coveralls": "nyc report --reporter=text-lcov | coveralls",
+    "coverage": "vitest run --coverage",
+    "coveralls": "cat ./coverage/lcov.info | coveralls",
     "release": "standard-version"
   },
   "files": [
@@ -37,26 +37,24 @@
   "main": "./build/utils.js",
   "types": "./build/index.d.ts",
   "devDependencies": {
-    "@types/mocha": "^10.0.10",
-    "@types/node": "^17.0.19",
+    "@types/node": "^22.20.1",
     "@typescript-eslint/eslint-plugin": "^5.12.1",
     "@typescript-eslint/parser": "^5.12.1",
+    "@vitest/coverage-v8": "^4.1.10",
     "eslint": "^8.9.0",
     "eslint-plugin-import": "^2.25.4",
-    "mocha": "^11.7.4",
-    "nyc": "^15.1.0",
     "rollup": "2.79.2",
     "rollup-plugin-dts": "^4.1.0",
     "rollup-plugin-typescript2": "^0.31.2",
     "standard-version": "^9.5.0",
-    "ts-node": "^10.5.0",
-    "typescript": "^4.5.5"
+    "typescript": "^4.5.5",
+    "vitest": "^4.1.10"
   },
   "name": "pvutils",
   "version": "1.1.5",
   "license": "MIT",
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=20.0.0"
   },
   "devEngines": {
     "packageManager": {

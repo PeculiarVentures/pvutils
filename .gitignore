@@ -1,7 +1,6 @@
 .idea
 **/node_modules
 build
-.nyc_output
 coverage
 *.log
 .DS_Store

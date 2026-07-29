@@ -13,7 +13,8 @@
   ],
   "ignorePatterns": [
     "build/**/*",
-    "rollup.config.js"
+    "rollup.config.js",
+    "vitest.config.ts"
   ],
   "rules": {
     "@typescript-eslint/ban-ts-ignore": 0,
