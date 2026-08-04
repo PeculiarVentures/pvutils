@@ -117,15 +117,15 @@ describe('Functional Tests for "pvutils" package', () => {
 
   it("utilConcatView", () => {
     expect(
-      pvutils.bufferToHexCodes(pvutils.utilConcatView(data).buffer),
+      pvutils.bufferToHexCodes(pvutils.utilConcatView(data).buffer as ArrayBuffer),
       "Incorrect return value #1",
     ).toBe("0102030405060708090A");
     expect(
-      pvutils.bufferToHexCodes(pvutils.utilConcatView(data, data).buffer),
+      pvutils.bufferToHexCodes(pvutils.utilConcatView(data, data).buffer as ArrayBuffer),
       "Incorrect return value #2",
     ).toBe("0102030405060708090A0102030405060708090A");
     expect(
-      pvutils.bufferToHexCodes(pvutils.utilConcatView(data, data, data).buffer),
+      pvutils.bufferToHexCodes(pvutils.utilConcatView(data, data, data).buffer as ArrayBuffer),
       "Incorrect return value #3",
     ).toBe("0102030405060708090A0102030405060708090A0102030405060708090A");
   });

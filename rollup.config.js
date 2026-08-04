@@ -1,7 +1,12 @@
 import path from "path";
+import { fileURLToPath } from "url";
+import { createRequire } from "module";
 import typescript from "rollup-plugin-typescript2";
 import dts from "rollup-plugin-dts";
-import pkg from "./package.json";
+
+const require = createRequire(import.meta.url);
+const pkg = require("./package.json");
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const banner = ["/*!", " Copyright (c) Peculiar Ventures, LLC", "*/", ""].join("\n");
 const input = "src/index.ts";
@@ -29,6 +34,7 @@ export default [
         banner,
         file: pkg.main,
         format: "cjs",
+        esModule: true,
       },
       {
         banner,
