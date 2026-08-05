@@ -37,8 +37,7 @@
     "format": "oxfmt",
     "format:check": "oxfmt --check",
     "build": "rollup -c",
-    "coverage": "vitest run --coverage",
-    "release": "standard-version"
+    "coverage": "vitest run --coverage"
   },
   "devDependencies": {
     "@types/node": "^26.1.2",
@@ -48,7 +47,6 @@
     "rollup": "^4.62.3",
     "rollup-plugin-dts": "^6.4.1",
     "rollup-plugin-typescript2": "^0.37.0",
-    "standard-version": "^9.5.0",
     "typescript": "^6.0.3",
     "vitest": "^4.1.10"
   },
