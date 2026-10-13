@@ -14,7 +14,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [22.x, 24.x]
+        node-version: [24.x]
 
     steps:
       - uses: actions/checkout@v7
@@ -61,4 +61,4 @@ jobs:
         uses: coverallsapp/github-action@v2
         with:
           parallel-finished: true
-          carryforward: "run-22.x,run-24.x"
+          carryforward: "run-24.x"
