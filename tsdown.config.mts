@@ -23,6 +23,6 @@ export default defineConfig({
   tsconfig: "tsconfig.json",
   attw: {
     level: "error",
-    profile: "node16",
+    profile: "strict",
   },
 });
