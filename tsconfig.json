@@ -8,8 +8,7 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "allowSyntheticDefaultImports": true,
-    "lib": ["ES2022", "DOM"],
     "noEmit": true
   },
-  "include": ["src", "tests", "*.config.ts", "*.config.mts"]
+  "include": ["src", "*.config.ts", "*.config.mts"]
 }
