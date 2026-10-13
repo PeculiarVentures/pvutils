@@ -1,0 +1,50 @@
+name: Verify
+description: Install dependencies, then lint, typecheck, build and test the package
+
+inputs:
+  registry-url:
+    description: Registry URL for setup-node (required for npm publish)
+    required: false
+    default: ""
+
+runs:
+  using: composite
+  steps:
+    - name: Use Node.js
+      uses: actions/setup-node@v7
+      with:
+        node-version: 24
+        registry-url: ${{ inputs.registry-url }}
+        cache: npm
+
+    - name: Install dependencies
+      shell: bash
+      run: npm ci
+
+    - name: Run linter
+      shell: bash
+      run: npm run lint
+
+    - name: Run format check
+      shell: bash
+      run: npm run format:check
+
+    - name: Run typecheck
+      shell: bash
+      run: npm run typecheck
+
+    - name: Build
+      shell: bash
+      run: npm run build
+
+    - name: Check generated package exports are committed
+      shell: bash
+      run: git diff --exit-code package.json
+
+    - name: Check ES compatibility
+      shell: bash
+      run: npm run check:es
+
+    - name: Run test with coverage
+      shell: bash
+      run: npm run coverage

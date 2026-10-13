@@ -4,9 +4,8 @@ on:
   push:
     branches:
       - master
+      - main
   pull_request:
-    branches:
-      - master
 
 jobs:
   build:
@@ -15,32 +14,8 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      - name: Use Node.js
-        uses: actions/setup-node@v7
-        with:
-          node-version: 24
-          cache: npm
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Run linter
-        run: npm run lint
-
-      - name: Run format check
-        run: npm run format:check
-
-      - name: Run typecheck
-        run: npm run typecheck
-
-      - name: Build
-        run: npm run build
-
-      - name: Check ES compatibility
-        run: npm run check:es
-
-      - name: Run test with coverage
-        run: npm run coverage
+      - name: Verify
+        uses: ./.github/actions/verify
 
       - name: Coveralls
         uses: coverallsapp/github-action@v2
