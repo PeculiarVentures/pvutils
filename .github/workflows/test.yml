@@ -40,6 +40,9 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Check ES compatibility
+        run: npm run check:es
+
       - name: Run test with coverage
         run: npm run coverage
 

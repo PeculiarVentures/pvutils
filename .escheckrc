@@ -1,0 +1,14 @@
+[
+  {
+    "ecmaVersion": "es2019",
+    "module": false,
+    "files": "build/*.js",
+    "checkFeatures": true
+  },
+  {
+    "ecmaVersion": "es2019",
+    "module": true,
+    "files": "build/*.mjs",
+    "checkFeatures": true
+  }
+]
