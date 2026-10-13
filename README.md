@@ -22,3 +22,7 @@ Some example capabilities included in `pvutils` include:
 - Converting a number from 2^10 to 2^base,
 - Concatenate two ArrayBuffers,
 - And more...
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for development setup, commit conventions and the release flow.
