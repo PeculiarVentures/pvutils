@@ -12,18 +12,14 @@ jobs:
   build:
     runs-on: ubuntu-24.04
 
-    strategy:
-      matrix:
-        node-version: [24.x]
-
     steps:
       - uses: actions/checkout@v7
 
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node.js
         uses: actions/setup-node@v7
         with:
-          node-version: ${{ matrix.node-version }}
-          cache: "npm"
+          node-version: 24
+          cache: npm
 
       - name: Install dependencies
         run: npm ci
@@ -48,5 +44,3 @@ jobs:
 
       - name: Coveralls
         uses: coverallsapp/github-action@v2
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
