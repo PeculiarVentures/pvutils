@@ -1,15 +1,17 @@
 {
   "compilerOptions": {
-    "target": "ES2019",
-    "lib": ["ES2019"],
-    "module": "ESNext",
-    "moduleResolution": "Bundler",
+    "target": "es2023",
+    "lib": ["es2023"],
+    "module": "preserve",
+    "moduleResolution": "bundler",
+    "types": [],
+    "verbatimModuleSyntax": true,
+    "isolatedModules": true,
     "strict": true,
-    "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "allowSyntheticDefaultImports": true,
+    "noImplicitOverride": true,
+    "noErrorTruncation": true,
     "noEmit": true
   },
-  "include": ["src", "*.config.ts", "*.config.mts"]
+  "include": ["src", "*.config.ts"]
 }

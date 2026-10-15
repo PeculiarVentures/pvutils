@@ -12,11 +12,7 @@ export function getUTCDate(date: Date): Date {
  * @param name
  * @param defaultValue
  */
-export function getParametersValue<T = unknown>(
-  parameters: Record<string, any>,
-  name: string,
-  defaultValue: T,
-): T {
+export function getParametersValue<T = unknown>(parameters: Record<string, any>, name: string, defaultValue: T): T {
   if (parameters instanceof Object === false) {
     return defaultValue;
   }
@@ -31,12 +27,7 @@ export function getParametersValue<T = unknown>(
  * @param inputLength
  * @param insertSpace
  */
-export function bufferToHexCodes(
-  inputBuffer: ArrayBuffer,
-  inputOffset = 0,
-  inputLength = inputBuffer.byteLength - inputOffset,
-  insertSpace = false,
-): string {
+export function bufferToHexCodes(inputBuffer: ArrayBuffer, inputOffset = 0, inputLength = inputBuffer.byteLength - inputOffset, insertSpace = false): string {
   let result = "";
 
   for (const item of new Uint8Array(inputBuffer, inputOffset, inputLength)) {
@@ -68,12 +59,7 @@ export interface LocalBaseBlock {
  * @param {number} inputLength
  * @returns {boolean}
  */
-export function checkBufferParams(
-  baseBlock: LocalBaseBlock,
-  inputBuffer: ArrayBuffer,
-  inputOffset: number,
-  inputLength: number,
-): boolean {
+export function checkBufferParams(baseBlock: LocalBaseBlock, inputBuffer: ArrayBuffer, inputOffset: number, inputLength: number): boolean {
   if (!(inputBuffer instanceof ArrayBuffer)) {
     baseBlock.error = 'Wrong parameter: inputBuffer must be "ArrayBuffer"';
 
@@ -99,8 +85,7 @@ export function checkBufferParams(
   }
 
   if (inputBuffer.byteLength - inputOffset - inputLength < 0) {
-    baseBlock.error =
-      "End of input reached before message was fully decoded (inconsistent offset and length values)";
+    baseBlock.error = "End of input reached before message was fully decoded (inconsistent offset and length values)";
 
     return false;
   }
@@ -379,12 +364,7 @@ const base64UrlTemplate = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0
  * @param skipPadding Skip BASE-64 padding or not
  * @param skipLeadingZeros Skip leading zeros in input data or not
  */
-export function toBase64(
-  input: string,
-  useUrlTemplate = false,
-  skipPadding = false,
-  skipLeadingZeros = false,
-): string {
+export function toBase64(input: string, useUrlTemplate = false, skipPadding = false, skipLeadingZeros = false): string {
   let i = 0;
   let flag1 = 0;
   let flag2 = 0;
