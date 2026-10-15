@@ -25,46 +25,25 @@ The published package supports Node.js >= 12, so the build output must stay ES20
 ## Pull requests
 
 - Use [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) for commit messages and PR titles, e.g. `fix: handle empty input`, `feat(convert): add base64url helpers`. Mark breaking changes with `!` (`feat!: ...`) and/or a `BREAKING CHANGE:` footer.
-- `feat`, `fix`, `perf` and breaking changes appear in `CHANGELOG.md`. Other types (`chore`, `ci`, `docs`, `test`, ...) are omitted, so choose the type carefully.
-- The **Test** workflow must pass: lint, format, typecheck, build, exports check, ES compatibility, tests with coverage.
-- Do not bump the version or edit `CHANGELOG.md` in feature PRs; the release flow handles both.
+- Pull requests are squash-merged, so the pull request title becomes the commit message and drives the version and the release notes.
+- `feat`, `fix`, `perf`, `build`, `revert` and breaking changes trigger a release and appear in the release notes. Other types (`chore`, `ci`, `docs`, `test`, ...) do not, so choose the type carefully.
+- The **Test** workflow must pass: lint, format, typecheck, build, exports check, tests with coverage.
+- Do not bump the version in feature PRs; the release flow handles it.
 
-## Release flow
+## Releases
 
-Releases are made in two steps by two GitHub Actions workflows. Nothing is published from a local machine.
+Releases are managed by [release-please](https://github.com/googleapis/release-please) (`release-please-config.json`, `.release-please-manifest.json`):
 
-```text
-Version Bump (manual) ──► release PR ──► review & merge ──► Release (automatic) ──► npm + tag + GitHub Release
-```
+1. On every push to `master`, the **Publish** workflow first runs lint, format, typecheck, tests, and build (the **Test** workflow). Only when they pass does release-please open or update a `chore(release): vX.Y.Z` pull request that bumps `package.json`/`package-lock.json`. The version comes from the commits: a breaking change bumps major, `feat` bumps minor, and `fix`, `perf`, `build`, and `revert` bump patch. Other types do not trigger a release.
+2. Merge the release pull request. release-please creates the `vX.Y.Z` tag and a GitHub Release with the notes from the pull request; the workflow then publishes that commit to npm via Trusted Publisher, with provenance, and moves the major tag (for example `v2`) when this is the newest release of that major.
 
-### 1. Version Bump (`.github/workflows/version-bump.yml`)
+To retry a failed npm publish, run **Publish** manually from the `vX.Y.Z` tag. Set the optional `RELEASE_TOKEN` secret (PAT or GitHub App token) so the Test workflow runs on the release pull request.
 
-Run it from **Actions → Version Bump → Run workflow** on `master` and choose `patch`, `minor` or `major`. It:
-
-1. Bumps the version in `package.json` and `package-lock.json`.
-2. Prepends a section for the new version to `CHANGELOG.md`, generated with `conventional-changelog -p angular` from commits since the last `v*` tag.
-3. Opens (or updates) a PR from the `release/version-bump` branch titled `chore(release): vX.Y.Z`.
-
-Choose the bump type from the commits since the last release: `major` if any are breaking, `minor` if any are `feat`, otherwise `patch`.
-
-Review the PR: check the version, and edit the `CHANGELOG.md` section on the branch if wording needs fixing. That section becomes the GitHub Release notes.
-
-> PRs opened with the default `GITHUB_TOKEN` do not trigger other workflows. Set a `RELEASE_TOKEN` repository secret (a token with `contents` and `pull-requests` write access) so the **Test** workflow runs on the release PR.
-
-### 2. Release (`.github/workflows/release.yml`)
-
-Runs on every push to `master` that changes `package.json`. A `check` job reads the version and looks for a GitHub Release `vX.Y.Z`; if it already exists, the workflow stops. Otherwise the `publish` job, in the `npm` environment:
-
-1. Runs lint, format check, typecheck, tests, build, the exports check and the ES compatibility check.
-2. Extracts the `X.Y.Z` section from `CHANGELOG.md` and fails if there is none.
-3. Publishes to npm via [Trusted Publishing](https://docs.npmjs.com/trusted-publishers) (OIDC, no npm token), skipping the step if that version is already on npm.
-4. Pushes the `vX.Y.Z` tag (reusing it if it already exists) and force-moves the major tag (e.g. `v2`) to it.
-5. Creates the GitHub Release `vX.Y.Z` with the extracted notes.
-
-The GitHub Release is created last, so a failed run can be retried with **Re-run jobs**: steps that already completed are skipped.
+Release notes live only in [GitHub Releases](https://github.com/PeculiarVentures/pvutils/releases); there is no `CHANGELOG.md`. Only `feat`, `fix`, `perf`, `build`, `revert`, and breaking changes are listed. Force a version with a `Release-As: x.y.z` line in a commit body. To fix the notes for a merged change, add a `BEGIN_COMMIT_OVERRIDE` … `END_COMMIT_OVERRIDE` block with the corrected commit message to that pull request's description; edits to the release pull request description are overwritten when new commits land.
 
 ### Setup
 
-- npm package settings → Trusted Publisher: repository `PeculiarVentures/pvutils`, workflow `release.yml`, environment `npm`.
+- npm package settings → Trusted Publisher: repository `PeculiarVentures/pvutils`, workflow `publish.yml`, environment `npm`.
+- GitHub repository settings → Actions → General: allow GitHub Actions to create and approve pull requests (release-please opens the release PR).
 - GitHub repository settings → Environments: an `npm` environment (add required reviewers to gate publishing).
 - Optional: the `RELEASE_TOKEN` secret described above.

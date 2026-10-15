@@ -5,7 +5,7 @@
 <div align="center">
 
 ![NPM License](https://img.shields.io/npm/l/pvutils)
-![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/PeculiarVentures/pvutils/test.yml?label=test)
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/PeculiarVentures/pvutils/publish.yml?branch=master&label=publish)
 [![npm version](https://img.shields.io/npm/v/pvutils.svg)](https://www.npmjs.com/package/pvutils)
 ![Coveralls](https://img.shields.io/coverallsCoverage/github/PeculiarVentures/pvutils)
 [![npm downloads](https://img.shields.io/npm/dm/pvutils.svg)](https://www.npmjs.com/package/pvutils)
